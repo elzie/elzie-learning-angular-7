@@ -1,16 +1,24 @@
 <main class="container">
     <div class="addBtn">
         <a routerLink="/add">
-
             <button type="button" class="addBtn" mat-flat-button color="accent" (click)="onAddNewBtnClick()">Add New
                 Assignment</button>
-
         </a>
     </div>
-    <p>{{name}}</p>
-    <p>{{dueDate}}</p>
-
-    <mat-list *ngFor="let assignment of assignments">
+    <mat-card *ngFor="let assignment of assignments">
+        <div class="header">
+            <mat-card-title>{{assignment.name}}</mat-card-title>
+            <mat-card-subtitle *ngIf="assignment.submitted === true">Submitted</mat-card-subtitle>
+            <mat-card-subtitle *ngIf="assignment.submitted === false">Due {{assignment.dueDate | date}}
+            </mat-card-subtitle>
+        </div>
+        <mat-card-content>Some example text by elze</mat-card-content>
+        <mat-card-actions>
+            <button mat-flat-button color="link" (click)="setSelected(assignment)">Details</button>
+        </mat-card-actions>
+        <mat-card-footer>Elzie Publishing</mat-card-footer>
+    </mat-card>
+    <!-- <mat-list *ngFor="let assignment of assignments">
 
         <h3 mat-subheader>{{assignment.dueDate | date}}</h3>
         <mat-list-item (click)="setSelected(assignment)">
@@ -24,7 +32,7 @@
             <mat-divider></mat-divider>
         </mat-list-item>
 
-    </mat-list>
+    </mat-list> -->
 </main>
 <!--<app-add-assignment (newAssignment)="onNewAssignment($event)" *ngIf="formVisible"></app-add-assignment>-->
 <!--<app-assignment-detail [passedAssignment]="selectedAssignment"></app-assignment-detail>-->
