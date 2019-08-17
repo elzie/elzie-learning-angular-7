@@ -1,0 +1,17 @@
+.submitted {
+  color: green;
+}
+
+.unsubmitted {
+  color: red;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.addBtn {
+  align-self: flex-end;
+  margin-top: -54px;
+}

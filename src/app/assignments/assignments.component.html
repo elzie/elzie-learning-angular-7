@@ -1,0 +1,30 @@
+<main class="container">
+    <div class="addBtn">
+        <a routerLink="/add">
+
+            <button type="button" class="addBtn" mat-flat-button color="accent" (click)="onAddNewBtnClick()">Add New
+                Assignment</button>
+
+        </a>
+    </div>
+    <p>{{name}}</p>
+    <p>{{dueDate}}</p>
+
+    <mat-list *ngFor="let assignment of assignments">
+
+        <h3 mat-subheader>{{assignment.dueDate | date}}</h3>
+        <mat-list-item (click)="setSelected(assignment)">
+            <p appSubmitted *ngIf="assignment.submitted; else unsubmitted">Assignment {{assignment.name}} has
+                been
+                submitted
+            </p>
+            <ng-template #unsubmitted>
+                Assignment {{assignment.name}} hasn't been submitted.
+            </ng-template>
+            <mat-divider></mat-divider>
+        </mat-list-item>
+
+    </mat-list>
+</main>
+<!--<app-add-assignment (newAssignment)="onNewAssignment($event)" *ngIf="formVisible"></app-add-assignment>-->
+<!--<app-assignment-detail [passedAssignment]="selectedAssignment"></app-assignment-detail>-->
