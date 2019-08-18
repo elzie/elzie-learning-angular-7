@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { MatButtonModule, MatInputModule, MatFormFieldModule, MatCardModule, MatCheckboxModule } from '@angular/material';
 import { MatDatepickerModule, MatNativeDateModule, MatListModule, MatSlideToggleModule, MatTabsModule } from '@angular/material';
-import { MatStepperModule } from '@angular/material';
+import { MatStepperModule, MatSnackBarModule } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +15,7 @@ import { AddAssignmentComponent } from './assignments/add-assignment/add-assignm
 import { AssignmentsService } from './shared/assignments.service';
 import { EditAssignmentComponent } from './assignments/assignment-detail/edit-assignment/edit-assignment.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SnackbarComponent } from './snackbar/snackbar.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { HttpClientModule } from '@angular/common/http';
     SubmittedDirective,
     AssignmentDetailComponent,
     AddAssignmentComponent,
-    EditAssignmentComponent
+    EditAssignmentComponent,
+    SnackbarComponent
   ],
   imports: [
     BrowserModule,
@@ -40,8 +42,12 @@ import { HttpClientModule } from '@angular/common/http';
     MatSlideToggleModule,
     MatTabsModule,
     MatStepperModule,
+    MatSnackBarModule,
     AppRoutingModule,
     HttpClientModule
+  ],
+  entryComponents: [
+    SnackbarComponent
   ],
   providers: [AssignmentsService],
   bootstrap: [AppComponent]

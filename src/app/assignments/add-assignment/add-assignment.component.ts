@@ -2,6 +2,8 @@ import { Component, Output, EventEmitter, OnInit } from '@angular/core';
 import { Assignment } from './../assignment.model';
 import { AssignmentsService } from '../../shared/assignments.service';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material';
+import { SnackbarComponent } from 'src/app/snackbar/snackbar.component';
 
 @Component({
   selector: 'app-add-assignment',
@@ -18,7 +20,8 @@ export class AddAssignmentComponent implements OnInit {
   newAssignment: Assignment;
 
   constructor(private assignmentService: AssignmentsService,
-    private router: Router) { }
+    private router: Router,
+    public snackBar: MatSnackBar) { }
 
   ngOnInit() {
   }
@@ -36,5 +39,11 @@ export class AddAssignmentComponent implements OnInit {
     this.assignmentService.addAssignments(assignment).subscribe(
       res => this.router.navigate(['/home'])
     );
+    this.openSnackbar();
+  }
+  openSnackbar() {
+    this.snackBar.openFromComponent(SnackbarComponent, {
+      duration: 1000
+    });
   }
 }
