@@ -63,4 +63,19 @@ export class AssignmentsService {
 
     return this.http.delete(newUrl);
   }
+  getSubmitted() {
+    const assignments = this.http.get<Assignment[]>(this.url);
+
+    return assignments
+      .pipe(map(
+        arr =>
+          arr.filter(a => a.submitted === true)));
+  }
+
+  getUnsubmitted() {
+    const assignments = this.http.get<Assignment[]>(this.url);
+
+    return assignments.pipe(map(arr =>
+      arr.filter(a => a.submitted === false)));
+  }
 }

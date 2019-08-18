@@ -31,26 +31,53 @@
             </div>
         </mat-tab>
         <mat-tab label="Done">
-            <div *ngFor="let assignment of assignments">
-                <mat-card *ngIf="assignment.submitted === true">
-                    <div class="header">
-                        <div class="left">
-                            <mat-card-title>{{assignment.name}}</mat-card-title>
-                            <!-- <mat-card-subtitle *ngIf="assignment.submitted === true">Submitted</mat-card-subtitle> -->
-                            <mat-card-subtitle>Submitted
-                            </mat-card-subtitle>
+            <cdk-virtual-scroll-viewport class="example-viewport" style="height: 50vh;" itemSize="50">
+
+                <div *cdkVirtualFor="let assignment of assignments">
+                    <mat-card *ngIf="assignment.submitted === true" class="cardSubmitted">
+                        <div class="header">
+                            <div class="left">
+                                <mat-card-title>{{assignment.name}}</mat-card-title>
+                                <!-- <mat-card-subtitle *ngIf="assignment.submitted === true">Submitted</mat-card-subtitle> -->
+                                <mat-card-subtitle>Submitted
+                                </mat-card-subtitle>
+                            </div>
+                            <div class="right">
+                                <img mat-card-avatar src="../../assets/elzie.jpg" alt="teh elzie" class="">
+                            </div>
                         </div>
-                        <div class="right">
-                            <img mat-card-avatar src="../../assets/elzie.jpg" alt="teh elzie" class="">
-                        </div>
-                    </div>
-                    <mat-card-content>Some example text by elze</mat-card-content>
+                        <!-- <mat-card-content>Some example text by elze</mat-card-content>
                     <img mat-card-image src="../../assets/writing.jpeg" width="100" alt="writing" class="card-image">
                     <mat-card-actions>
                         <button mat-flat-button color="link" (click)="setSelected(assignment)">Details</button>
                     </mat-card-actions>
-                    <mat-card-footer>Elzie Publishing</mat-card-footer>
-                </mat-card>
+                    <mat-card-footer>Elzie Publishing</mat-card-footer> -->
+                    </mat-card>
+                </div>
+            </cdk-virtual-scroll-viewport>
+
+        </mat-tab>
+        <mat-tab label="Drag 'n' drop lists">
+            <div class="column-container">
+                <div class="example-container">
+                    <h2>Unsubmitted</h2>
+                    <div cdkDropList #unsubmittedList="cdkDropList" [cdkDropListData]="unsubmitted"
+                        [cdkDropListConnectedTo]="submittedList" (cdkDropListDropped)="onDrop($event)" class="example">
+                        <div class="example-box" *ngFor="let item of unsubmitted" cdkDrag>
+                            <p>{{item.name}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="example-container">
+                    <h2>Submitted</h2>
+                    <div cdkDropList #submittedList="cdkDropList" [cdkDropListData]="submitted"
+                        [cdkDropListConnectedTo]="unsubmittedList" (cdkDropListDropped)="onDrop($event)"
+                        class="example">
+                        <div class="example-box" *ngFor="let item of submitted" cdkDrag>
+                            <p>{{item.name}}</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </mat-tab>
     </mat-tab-group>

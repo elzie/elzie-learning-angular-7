@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { MatButtonModule, MatInputModule, MatFormFieldModule, MatCardModule, MatCheckboxModule } from '@angular/material';
 import { MatDatepickerModule, MatNativeDateModule, MatListModule, MatSlideToggleModule, MatTabsModule } from '@angular/material';
 import { MatStepperModule, MatSnackBarModule } from '@angular/material';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -43,6 +45,8 @@ import { SnackbarComponent } from './snackbar/snackbar.component';
     MatTabsModule,
     MatStepperModule,
     MatSnackBarModule,
+    ScrollingModule,
+    DragDropModule,
     AppRoutingModule,
     HttpClientModule
   ],
