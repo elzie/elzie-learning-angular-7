@@ -5,19 +5,55 @@
                 Assignment</button>
         </a>
     </div>
-    <mat-card *ngFor="let assignment of assignments">
-        <div class="header">
-            <mat-card-title>{{assignment.name}}</mat-card-title>
-            <mat-card-subtitle *ngIf="assignment.submitted === true">Submitted</mat-card-subtitle>
-            <mat-card-subtitle *ngIf="assignment.submitted === false">Due {{assignment.dueDate | date}}
-            </mat-card-subtitle>
-        </div>
-        <mat-card-content>Some example text by elze</mat-card-content>
-        <mat-card-actions>
-            <button mat-flat-button color="link" (click)="setSelected(assignment)">Details</button>
-        </mat-card-actions>
-        <mat-card-footer>Elzie Publishing</mat-card-footer>
-    </mat-card>
+
+    <mat-tab-group>
+        <mat-tab label="To Do">
+            <div *ngFor="let assignment of assignments">
+                <mat-card *ngIf="assignment.submitted === false">
+                    <div class="header">
+                        <div class="left">
+                            <mat-card-title>{{assignment.name}}</mat-card-title>
+                            <!-- <mat-card-subtitle *ngIf="assignment.submitted === true">Submitted</mat-card-subtitle> -->
+                            <mat-card-subtitle>Due {{assignment.dueDate | date}}
+                            </mat-card-subtitle>
+                        </div>
+                        <div class="right">
+                            <img mat-card-avatar src="../../assets/elzie.jpg" alt="teh elzie" class="">
+                        </div>
+                    </div>
+                    <mat-card-content>Some example text by elze</mat-card-content>
+                    <img mat-card-image src="../../assets/writing.jpeg" width="100" alt="writing" class="card-image">
+                    <mat-card-actions>
+                        <button mat-flat-button color="link" (click)="setSelected(assignment)">Details</button>
+                    </mat-card-actions>
+                    <mat-card-footer>Elzie Publishing</mat-card-footer>
+                </mat-card>
+            </div>
+        </mat-tab>
+        <mat-tab label="Done">
+            <div *ngFor="let assignment of assignments">
+                <mat-card *ngIf="assignment.submitted === true">
+                    <div class="header">
+                        <div class="left">
+                            <mat-card-title>{{assignment.name}}</mat-card-title>
+                            <!-- <mat-card-subtitle *ngIf="assignment.submitted === true">Submitted</mat-card-subtitle> -->
+                            <mat-card-subtitle>Submitted
+                            </mat-card-subtitle>
+                        </div>
+                        <div class="right">
+                            <img mat-card-avatar src="../../assets/elzie.jpg" alt="teh elzie" class="">
+                        </div>
+                    </div>
+                    <mat-card-content>Some example text by elze</mat-card-content>
+                    <img mat-card-image src="../../assets/writing.jpeg" width="100" alt="writing" class="card-image">
+                    <mat-card-actions>
+                        <button mat-flat-button color="link" (click)="setSelected(assignment)">Details</button>
+                    </mat-card-actions>
+                    <mat-card-footer>Elzie Publishing</mat-card-footer>
+                </mat-card>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
     <!-- <mat-list *ngFor="let assignment of assignments">
 
         <h3 mat-subheader>{{assignment.dueDate | date}}</h3>

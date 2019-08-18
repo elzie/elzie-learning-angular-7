@@ -2,6 +2,7 @@ let express = require('express');
 let app = express();
 let bodyParser = require('body-parser');
 let assignment = require('./routes/assignments');
+var cors = require('cors');
 
 let mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
@@ -49,6 +50,7 @@ app.route(prefix + '/assignment')
   .put(assignment.updateAssignment);
 
 // START THE SERVER
+app.use(cors());
 app.listen(port, "0.0.0.0");
 console.log('Working on port ' + port);
 

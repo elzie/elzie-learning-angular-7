@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { MatButtonModule, MatInputModule, MatFormFieldModule, MatCardModule, MatCheckboxModule } from '@angular/material';
-import { MatDatepickerModule, MatNativeDateModule, MatListModule, MatSlideToggleModule } from '@angular/material';
+import { MatDatepickerModule, MatNativeDateModule, MatListModule, MatSlideToggleModule, MatTabsModule } from '@angular/material';
+import { MatStepperModule } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -37,6 +38,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatCardModule,
     MatCheckboxModule,
     MatSlideToggleModule,
+    MatTabsModule,
+    MatStepperModule,
     AppRoutingModule,
     HttpClientModule
   ],

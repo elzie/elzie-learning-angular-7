@@ -1,16 +1,30 @@
-<form ngForm #assignmentsForm class="form">
-    <mat-form-field>
-        <input matInput #assignmentName [(ngModel)]="name" name="name" placeholder="Enter assignment name">
-    </mat-form-field>
-    <mat-form-field>
-        <input matInput [matDatepicker]="picker" [(ngModel)]="dueDate" name="name"
-            placeholder="When is your assignment due?">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
+<mat-vertical-stepper>
 
+    <mat-step label="assignment name">
+        <form ngForm #assignmentsForm class="form">
+            <mat-form-field>
+                <input matInput #assignmentName [(ngModel)]="name" name="name" placeholder="Enter assignment name">
+            </mat-form-field>
+            <button mat-stroked-button color="primary" matStepperNext>Next</button>
+        </form>
+    </mat-step>
+    <mat-step>
+        <form class="form">
+            <mat-form-field>
+                <input matInput [matDatepicker]="picker" [(ngModel)]="dueDate" name="name"
+                    placeholder="When is your assignment due?">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <button mat-stroked-button color="primary" matStepperNext>Next</button>
+            <button mat-stroked-button color="warm" matStepperPrevious>Back</button>
+        </form>
+    </mat-step>
 
-
-    <button type="button" mat-stroked-button color="primary" (click)="onSubmit(); assignmentsForm.reset()">Add
-        Assignment</button>
-</form>
+    <mat-step>
+        <form class="form">
+            <button type="button" mat-stroked-button color="primary" (click)="onSubmit(); assignmentsForm.reset()">Add
+                Assignment</button>
+        </form>
+    </mat-step>
+</mat-vertical-stepper>
