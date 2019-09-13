@@ -7,7 +7,7 @@ var cors = require('cors');
 let mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
-const uri = 'connection-string';
+const uri = 'mongodb+srv://user:bLkWQSdnjCV08zyw@lz-cluster-01-ikknf.mongodb.net/assignments?retryWrites=true&w=majority';
 
 const options = {
   useNewUrlParser: true
